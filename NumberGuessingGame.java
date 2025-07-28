@@ -1,0 +1,52 @@
+import java.util.Random;
+import java.util.Scanner;
+public class NumberGuessingGame { 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
+        int totalRounds = 0;
+        int totalScore = 0;
+
+        System.out.println("🎮 Welcome to the Number Guessing Game!");
+        System.out.println("You have 5 attempts to guess the number between 1 and 100.");
+        
+
+        boolean playAgain = true;
+
+        while (playAgain) {
+            int randomNumber = rand.nextInt(100) + 1;
+            int attempts = 5;
+            boolean isCorrect = false;
+
+            for (int i = 1; i <= attempts; i++) {
+                System.out.print("Attempt " + i + " - Enter your guess: ");
+                int userGuess = sc.nextInt();
+
+                if (userGuess == randomNumber) {
+                    System.out.println("🎉 Correct! You guessed the number in " + i + " attempt(s)!");
+                    totalScore += (6 - i) * 10;  // More points for fewer attempts
+                    isCorrect = true;
+                    break;
+                } else if (userGuess < randomNumber) {
+                    System.out.println("Too low!");
+                } else {
+                    System.out.println("Too high!");
+                }
+            }
+
+            if (!isCorrect) {
+                System.out.println("❌ You've used all attempts. The correct number was: " + randomNumber);
+            }
+
+            totalRounds++;
+            System.out.println("⭐ Your current score: " + totalScore);
+
+            System.out.print("Do you want to play another round? (yes/no): ");
+            String answer = sc.next();
+            playAgain = answer.equalsIgnoreCase("yes");
+        }
+
+        System.out.println("🏁 Game Over! You played " + totalRounds + " round(s) and scored " + totalScore + " points.");
+        sc.close();
+    }
+}
