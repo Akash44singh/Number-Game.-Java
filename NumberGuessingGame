@@ -7,7 +7,7 @@ public class NumberGuessingGame {
         int totalRounds = 0;
         int totalScore = 0;
 
-        System.out.println("🎮 Welcome to the Number Guessing Game!");
+        System.out.println("Welcome to the Number Guessing Game!");
         System.out.println("You have 5 attempts to guess the number between 1 and 100.");
         
 
@@ -23,7 +23,7 @@ public class NumberGuessingGame {
                 int userGuess = sc.nextInt();
 
                 if (userGuess == randomNumber) {
-                    System.out.println("🎉 Correct! You guessed the number in " + i + " attempt(s)!");
+                    System.out.println("Correct! You guessed the number in " + i + " attempt(s)!");
                     totalScore += (6 - i) * 10;  // More points for fewer attempts
                     isCorrect = true;
                     break;
@@ -35,11 +35,11 @@ public class NumberGuessingGame {
             }
 
             if (!isCorrect) {
-                System.out.println("❌ You've used all attempts. The correct number was: " + randomNumber);
+                System.out.println("You've used all attempts. The correct number was: " + randomNumber);
             }
 
             totalRounds++;
-            System.out.println("⭐ Your current score: " + totalScore);
+            System.out.println("Your current score: " + totalScore);
 
             System.out.print("Do you want to play another round? (yes/no): ");
             String answer = sc.next();
